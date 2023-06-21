@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.admin-layout {
+    min-height: 100vh;
+    grid-template-rows: 60px 1fr 40px;
+    grid-template-columns: 180px 1fr;
+}
