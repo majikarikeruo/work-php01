@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stamp;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +13,10 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('dashboards.index');
+        $stamps = Stamp::all();
+
+
+        return view('dashboards.index', compact(['stamps']));
     }
 
     /**
@@ -30,6 +34,33 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         //
+        // 画像ファイルのアップロード処理
+
+
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|image',
+        ]);
+
+        $imagePath = $request->file('image')->store('uploads', 'public');
+        // $url = Storage::url($imagePath);
+
+        // データベースへの保存処理
+
+        if (!$imagePath) {
+            return redirect()->route('dashboard.create');
+        }
+
+        // データベースへの保存処理
+        Stamp::create([
+            'title' => $request->title,
+            'image_url' => $imagePath,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('dashboard.index');
     }
 
     /**
