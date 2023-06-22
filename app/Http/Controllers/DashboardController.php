@@ -154,5 +154,12 @@ class DashboardController extends Controller
     public function destroy(string $id)
     {
         //
+
+        $stamp = Stamp::find($id);
+        $stamp->delete();
+
+        session()->flash('flashmessage', '画像の削除が完了しました');
+
+        return redirect()->route('dashboard.index');
     }
 }

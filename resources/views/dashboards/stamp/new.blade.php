@@ -33,7 +33,7 @@
             </ul>
 
             <div class="text-center">
-                <input type="submit" value="送信" class="inline-flex justify-center items-center px-3 py-2 text-sm rounded-lg w-40 font-medium text-center text-white bg-[#111727]">
+                <input type="submit" value="画像登録" class="inline-flex justify-center items-center px-3 py-2 text-sm rounded-lg w-40 font-medium text-center text-white bg-[#111727]">
             </div>
         </form>
     </div>
