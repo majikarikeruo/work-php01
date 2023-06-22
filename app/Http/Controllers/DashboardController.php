@@ -90,29 +90,33 @@ class DashboardController extends Controller
         //
 
 
+        $imagePath = $request->image_url; // 画像のパスを初期化
 
         //
         // 画像ファイルのアップロード処理
+        var_dump($request->file('image'));
+        $validate = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image',
+        ]);
         if ($request->file('image')) {
-            $validate = $request->validate([
-                'title' => 'required',
-                'description' => 'required',
-                'image' => 'required|image',
-            ]);
+
 
             $imagePath = $request->file('image')->store('uploads', 'public');
+            // データベースへの保存処理
+
+            if (!$imagePath) {
+                session()->flash('errorMessage', '画像情報の更新に失敗しました');
+                return redirect()->route('dashboard.edit', ['dashboard' => $id]);
+            }
         }
 
 
-        // データベースへの保存処理
 
-        if (!$imagePath) {
-            session()->flash('errorMessage', $validate);
-            return redirect()->route('dashboard.edit');
-        }
 
         // データベースへの保存処理
-        Stamp::updateOrCreate([
+        Stamp::updateOrCreate(['id' => $id], [
             'title' => $request->title,
             'image_url' => $imagePath,
             'description' => $request->description,
