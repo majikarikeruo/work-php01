@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Stamp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -13,11 +14,23 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $stamps = Stamp::all();
+        $stamps = DB::table('stamps')->paginate(10);
 
 
         return view('dashboards.index', compact(['stamps']));
     }
+
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $stamps = Stamp::where('title', 'LIKE', "%{$query}%")->paginate(10);
+        var_dump($stamps);
+
+        // return view('dashboards.search', compact(['stamps']));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -59,6 +72,9 @@ class DashboardController extends Controller
             'image_url' => $imagePath,
             'description' => $request->description,
         ]);
+
+        session()->flash('flashmessage', '画像の登録が完了しました');
+
 
         return redirect()->route('dashboard.index');
     }

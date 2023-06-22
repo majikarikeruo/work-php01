@@ -4,6 +4,40 @@
 
 .admin-layout {
     min-height: 100vh;
-    grid-template-rows: 60px 1fr 40px;
+    grid-template-rows: 60px 1fr 48px;
     grid-template-columns: 180px 1fr;
+}
+
+.sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 40;
+}
+
+.sidebar::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 64px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+@media (min-width: 560px) {
+    .sidebar {
+        position: static;
+        display: block;
+        height: auto;
+        transform: translateX(0);
+    }
+    .sidebar::after {
+        content: none;
+    }
+    .main {
+    }
 }

@@ -1,11 +1,14 @@
-<nav x-data="{ open: false }" class="px-4 flex shadow shadow-gray-500 row-start-1 row-end-2 col-start-1 col-end-3 border-b-2 border-stone-100 place-items-center">
+<nav x-data="{ open: false }" class="px-4 relative flex z-50 shadow shadow-gray-500 row-start-1 row-end-2 col-start-1 col-end-3 border-b-2 border-stone-100 place-items-center">
     <!-- Primary Navigation Menu -->
     <div class="flex justify-between h-16 w-full">
+        <div class="md:hidden flex items-center js-mobile-left-menu">
+            Menu
+        </div>
         <div class="flex">
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
-                <a href="{{ route('dashboard.index') }}" class="font-bold text-lg flex items-cente">
-                    コスゲリアン.net
+                <a href="{{ route('dashboard.index') }}" class="font-bold text-center text-lg flex items-cente">
+                    コスゲリアン.net CMS
                 </a>
             </div>
 
@@ -28,16 +31,16 @@
                         </button>
                         <div class="flex items-center">
                             <img src="https://kosugelian.net/images/stamp1.png" width="44" class="rounded-full">
-                            <span class="inline-block ml-3 font-bold">ケインコスゲ</span>
+                            <span class="inline-block ml-3 font-bold text-sm">ケインコスゲ</span>
                         </div>
                     </div>
 
                 </x-slot>
 
                 <x-slot name="content">
-                    <x-dropdown-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
-                    </x-dropdown-link>
+                    <!-- <x-dropdown-link :href="route('profile.edit')">
+                        {{ __('プロフィール') }}
+                    </x-dropdown-link> -->
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
@@ -45,7 +48,7 @@
 
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('ログアウト') }}
                         </x-dropdown-link>
                     </form>
                 </x-slot>

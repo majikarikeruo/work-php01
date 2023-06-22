@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen  grid grid-rows-3 grid-cols-2 admin-layout">
+    <div class="min-h-screen md:grid grid-rows-3 grid-cols-2 admin-layout">
 
         @include('layouts.navigation')
 

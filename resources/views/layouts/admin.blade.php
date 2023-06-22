@@ -12,17 +12,17 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
 <body>
-    <div class="grid grid-rows-3 grid-cols-2 admin-layout">
-        @include('layouts.header')
+    <div class="md:grid grid-rows-3 grid-cols-2 admin-layout">
+        @include('layouts.navigation')
 
         @include('layouts.sidebar')
 
-        <main class="main row-start-2 row-end-3 col-start-2 col-end p-10 bg-[#f9f9f9]">
+        <main class="main row-start-2 row-end-3 col-start-2 col-end p-4 md:p-10 bg-[#f9f9f9]">
             @yield('content')
         </main>
         @include('layouts.footer')
