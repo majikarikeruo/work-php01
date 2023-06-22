@@ -10,8 +10,9 @@
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
     </span>
-    <form action="{{route('dashboard.search')}}" method="GET">
-        <input type="search" name="query" placeholder="検索" class="py-3 px-4 pl-10 block w-80 border-gray-200 rounded-md text-sm border">
+    <form action="{{route('dashboard.search')}}" method="GET" class="flex">
+        <input type="search" name="query" placeholder="検索" class="mr-2 py-3 px-4 pl-10 block w-80 border-gray-200 rounded-md text-sm border">
+        <button type="submit" class="px-3 py-2 text-sm rounded-lg w-24 font-medium text-center text-white bg-[#111727]">検索</button>
     </form>
 </div>
 

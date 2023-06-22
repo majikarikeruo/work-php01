@@ -23,12 +23,17 @@ class DashboardController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
+        $keyword = $request->input('query');
+        $query = Stamp::query();
 
-        $stamps = Stamp::where('title', 'LIKE', "%{$query}%")->paginate(10);
-        var_dump($stamps);
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('description', 'LIKE', "%{$keyword}%");
+        }
 
-        // return view('dashboards.search', compact(['stamps']));
+        $stamps = $query->paginate(10);
+
+        return view('dashboards.stamp.search', compact(['stamps', 'keyword']));
     }
 
 
