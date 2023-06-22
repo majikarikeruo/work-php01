@@ -12,23 +12,25 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    @vite('resources/css/app.css')
-
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
-    <div class="grid grid-rows-3 grid-cols-2 admin-layout">
-        @include('layouts.header')
+<body class="font-sans antialiased">
+    <div class="min-h-screen  grid grid-rows-3 grid-cols-2 admin-layout">
+
+        @include('layouts.navigation')
 
         @include('layouts.sidebar')
 
+
+        <!-- Page Content -->
         <main class="main row-start-2 row-end-3 col-start-2 col-end p-10 bg-[#f9f9f9]">
-            @yield('content')
+            {{ $slot }}
         </main>
         @include('layouts.footer')
 
     </div>
-
 </body>
 
 </html>

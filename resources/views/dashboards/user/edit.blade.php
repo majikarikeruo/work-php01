@@ -2,10 +2,11 @@
 
 @section('content')
 
+
 <div class="white">
     <div class="bg-white p-10 shadow-lg">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-2xl font-bold">新規登録</h1>
+            <h1 class="text-2xl font-bold">ユーザー編集</h1>
             <a href="{{ route('admins.index') }}" class="text-sm underline">一覧へ戻る</a>
         </div>
         <form action="/upload" method="post" enctype="multipart/form-data">
@@ -18,11 +19,14 @@
                 </li>
                 <li class="mb-8">
                     <label for="file-input" class="">画像</label>
-                    <input type="file" name="file-input" id="file-input" class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:text-gray-400
+                    <div class="mb-10">
+                        <img src="https://kosugelian.net/images/stamp1.png" width="200" alt="">
+                    </div>
+                    <input type="file" name="file-input" id="file-input" class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500
                         file:bg-transparent file:border-0
                         file:bg-gray-100 file:mr-4
                         file:py-3 file:px-4
-                        dark:file:text-gray-400">
+                       ">
                 </li>
                 <li class="mb-8">
                     <label for="tags" class="block mb-2 text-sm font-medium text-gray-900">タグ:</label>
@@ -41,7 +45,4 @@
     </div>
 
 </div>
-
-
-
 @endsection

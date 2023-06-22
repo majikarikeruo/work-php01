@@ -22,11 +22,11 @@
                     <div class="mb-10">
                         <img src="https://kosugelian.net/images/stamp1.png" width="200" alt="">
                     </div>
-                    <input type="file" name="file-input" id="file-input" class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:text-gray-400
+                    <input type="file" name="file-input" id="file-input" class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500
                         file:bg-transparent file:border-0
                         file:bg-gray-100 file:mr-4
                         file:py-3 file:px-4
-                        dark:file:text-gray-400">
+                       ">
                 </li>
                 <li class="mb-8">
                     <label for="tags" class="block mb-2 text-sm font-medium text-gray-900">タグ:</label>
