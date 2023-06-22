@@ -1,9 +1,9 @@
-<nav x-data="{ open: false }" class="px-4 relative flex z-50 shadow shadow-gray-500 row-start-1 row-end-2 col-start-1 col-end-3 border-b-2 border-stone-100 place-items-center">
+<nav x-data="{ open: false }" class="bg-white px-4 relative flex z-50 shadow-sm md:shadow shadow-gray-500 row-start-1 row-end-2 col-start-1 col-end-3 md:border-b-2 md:border-stone-100 place-items-center">
     <!-- Primary Navigation Menu -->
     <div class="flex justify-between h-16 w-full">
-        <div class="md:hidden flex items-center js-mobile-left-menu">
+        <button class="md:hidden flex items-center js-mobile-menu">
             Menu
-        </div>
+        </button>
         <div class="flex">
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
@@ -11,8 +11,6 @@
                     コスゲリアン.net CMS
                 </a>
             </div>
-
-
         </div>
 
         <!-- Settings Dropdown -->
@@ -31,7 +29,7 @@
                         </button>
                         <div class="flex items-center">
                             <img src="https://kosugelian.net/images/stamp1.png" width="44" class="rounded-full">
-                            <span class="inline-block ml-3 font-bold text-sm">ケインコスゲ</span>
+                            <span class="inline-block ml-3 font-bold text-sm"></span>
                         </div>
                     </div>
 
@@ -68,7 +66,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden absolute right-0 top-[66px] shadow-md bg-white">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
@@ -77,15 +75,15 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
+            <!-- <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+            </div> -->
 
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+            <div class="mt-0">
+                <!-- <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
-                </x-responsive-nav-link>
+                </x-responsive-nav-link> -->
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -93,7 +91,7 @@
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('ログアウト') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

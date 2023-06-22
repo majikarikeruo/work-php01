@@ -1,4 +1,4 @@
-<div class="sidebar bg-[#1A2225] row-start-2 row-end-3 col-start-1 col-end-2 p-4 border-r-2 border-stone-100">
+<div class="sidebar bg-[#1A2225] row-start-2 row-end-3 col-start-1 col-end-2 p-4 md:border-r-2 md:border-stone-100">
     <nav>
         <ul>
             <li>
@@ -9,6 +9,6 @@
                 </ul>
             </li>
         </ul>
-
     </nav>
 </div>
+<div class="overlay"></div>

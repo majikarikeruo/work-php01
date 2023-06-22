@@ -11,8 +11,8 @@
         </svg>
     </span>
     <form action="{{route('dashboard.search')}}" method="GET" class="flex">
-        <input type="search" name="query" placeholder="検索" class="mr-2 py-3 px-4 pl-10 block w-80 border-gray-200 rounded-md text-sm border">
-        <button type="submit" class="px-3 py-2 text-sm rounded-lg w-24 font-medium text-center text-white bg-[#111727]">検索</button>
+        <input type="search" name="query" placeholder="検索" class="mr-2 py-3 px-4 pl-10 block md:w-80 border-gray-200 rounded-md text-sm border">
+        <button type="submit" class="px-3 py-2 text-sm rounded-lg w-16 md:w-24 font-medium text-center text-white bg-[#111727]">検索</button>
     </form>
 </div>
 
@@ -32,16 +32,16 @@
     @foreach ($stamps as $stamp)
     <div class="border border-gray-200 bg-white">
         <a href="/dashboard/{{$stamp->id}}/edit" class="relative flex items-center px-3 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
-            <div class="px-4 md:px-8">
+            <div class="flex-none px-4 md:px-8">
                 <input type="checkbox" name="" id="">
             </div>
-            <div class="flex justify-center mr-8 flex-none w-20">
+            <div class="flex justify-center mr-1 md:mr-8 flex-none w-16 md:w-20">
                 <img class="rounded-t-lg" src="{{Storage::url($stamp->image_url)}}" width="120" alt="" />
             </div>
-            <div class="md:flex grow items-center p-5">
-                <div class="flex grow">
+            <div class="flex md:grow items-center p-2 md:p-5">
+                <div class="md:flex md:grow">
                     <h5 class="flex-none w-[120px] mb-2 mr-20 text-xl font-bold text-left tracking-tight text-gray-900 ">{{$stamp->title}}</h5>
-                    <p class="text-sm h-[5rem] overflow-hidden overflow-ellipsis">{{$stamp->description}}</p>
+                    <p class="text-xs md:text-sm h-[5rem] overflow-hidden overflow-ellipsis">{{$stamp->description}}</p>
                 </div>
 
             </div>
