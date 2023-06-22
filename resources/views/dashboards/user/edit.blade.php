@@ -28,10 +28,7 @@
                         file:py-3 file:px-4
                        ">
                 </li>
-                <li class="mb-8">
-                    <label for="tags" class="block mb-2 text-sm font-medium text-gray-900">タグ:</label>
-                    <input type="text" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm border">
-                </li>
+
                 <li class="mb-8">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900">説明文:</label>
                     <textarea id="description" rows="6" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm border"></textarea>
