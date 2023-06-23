@@ -11,10 +11,23 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $stamps = DB::table('stamps')->paginate(10);
+        $sort = $request->input('sort');
+
+        $query = Stamp::query();
+
+        if ($sort) {
+            if ($sort === 'created_at_desc') {
+                $query->orderBy('created_at', 'desc');
+            } elseif ($sort === 'created_at_asc') {
+                $query->orderBy('created_at', 'asc');
+            } elseif ($sort === 'title') {
+                $query->orderBy('title', 'asc');
+            }
+        }
+
+        $stamps = $query->paginate(10);
 
 
         return view('dashboards.index', compact(['stamps']));
