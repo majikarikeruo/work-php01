@@ -20,6 +20,28 @@ class AppController extends Controller
         return view('index', compact(['stamps']));
     }
 
+    public function about()
+    {
+
+        return view('about');
+    }
+    public function taisou()
+    {
+
+        return view('taisou');
+    }
+    public function howtouse()
+    {
+
+        return view('howtouse');
+    }
+
+    public function contact()
+    {
+
+        return view('contact');
+    }
+
     public function download(Request $request)
     {
 

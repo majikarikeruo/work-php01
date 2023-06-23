@@ -19,6 +19,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', [AppController::class, 'index'])->name('index');
+Route::get('/about', [AppController::class, 'about'])->name('about');
+Route::get('/taisou', [AppController::class, 'taisou'])->name('taisou');
+Route::get('/howtouse', [AppController::class, 'howtouse'])->name('howtouse');
+Route::get('/contact', [AppController::class, 'contact'])->name('contact');
 
 Route::post('/download', [AppController::class, 'download'])->name('download');
 
