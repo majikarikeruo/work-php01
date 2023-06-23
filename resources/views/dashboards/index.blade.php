@@ -29,6 +29,10 @@
 
 
 <div class="w-full">
+    <div class="mb-1">
+        <span>{{ ($stamps->currentPage() -1) * $stamps->perPage() + 1}}件〜{{ (($stamps->currentPage() -1) * $stamps->perPage() + 1) + (count($stamps) -1)  }}件を表示</span>
+        <span>(全{{ $stamps->total() }}件)</span>
+    </div>
     @foreach ($stamps as $stamp)
     <div class="border border-gray-200 bg-white">
         <a href="/dashboard/{{$stamp->id}}/edit" class="relative flex items-center px-8 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
