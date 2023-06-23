@@ -10,7 +10,7 @@
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
     </span>
-    <form action="{{route('dashboard.search')}}" method="GET" class="flex">
+    <form action="{{route('dashboard.stamp.search')}}" method="GET" class="flex">
         <input type="search" name="query" placeholder="検索" class="mr-2 py-3 px-4 pl-10 block md:w-80 border-gray-200 rounded-md text-sm border">
         <button type="submit" class="px-3 py-2 text-sm rounded-lg w-16 md:w-24 font-medium text-center text-white bg-[#111727]">検索</button>
     </form>
@@ -29,14 +29,14 @@
 
 
 <div class="w-full">
-    <div class="flex justify-between items-center mb-2">
+    <div class="flex justify-between items-center mb-6">
         <div>
             <span>{{ ($stamps->currentPage() -1) * $stamps->perPage() + 1}}件〜{{ (($stamps->currentPage() -1) * $stamps->perPage() + 1) + (count($stamps) -1)  }}件を表示</span>
             <span>(全{{ $stamps->total() }}件)</span>
         </div>
         <div class="flex items-center">
             <span class="mr-3">並び替え</span>
-            <form action="{{route('dashboard.index')}}" method="GET" class="flex" id="sortForm">
+            <form action="{{route('dashboard.stamp.index')}}" method="GET" class="flex" id="sortForm">
                 <select name="sort" id="sort" class="border border-gray-200 rounded-md text-sm" onchange="document.getElementById('sortForm').submit();">
                     <option value="created_at_asc" {{ request('sort') == 'created_at_asc' ? 'selected' : '' }}>登録順（新しい順）</option>
                     <option value="created_at_desc" {{ request('sort') == 'created_at_desc' ? 'selected' : '' }}>登録順（古い順）</option>
@@ -47,12 +47,32 @@
         </div>
     </div>
 
+
+    <div class="flex-none mb-4 px-0 flex items-center">
+        <form action="" class="mr-8 js-delete-form hidden">
+            <input type="hidden" name="stamp" value="">
+            <button type="submit" class="inline-flex items-center px-3 py-2 text-sm rounded-lg w-50 font-medium text-center border-solid border text-[#f00] bg-white border-[#f00]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m6 0V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+                <span class="inline-block ml-3">選択中のスタンプを削除</span>
+            </button>
+        </form>
+        <label for="allCheck">
+            <input type="checkbox" name="" id="allCheck">
+            <span class="inline-block ml-3 js-check-label" id="allCheckComment">全て選択</span>
+        </label>
+    </div>
+
     @foreach ($stamps as $stamp)
     <div class="border border-gray-200 bg-white">
-        <a href="/dashboard/{{$stamp->id}}/edit" class="relative flex items-center px-8 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
-            <!-- <div class="flex-none px-4 md:px-8">
-                <input type="checkbox" name="" id="">
-            </div> -->
+        <a href="{{route('dashboard.stamp.edit', ['stamp'=>$stamp->id]) }}" class="relative flex items-center px-4 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
+            <div class="flex-none px-4 md:px-8">
+                <input type="checkbox" name="stamps[]" id="" value="{{$stamp->id}}" class="js-check">
+            </div>
             <div class="flex justify-center mr-1 md:mr-8 flex-none w-20">
                 <img class="rounded-t-lg" src="{{Storage::url($stamp->image_url)}}" width="120" alt="" />
             </div>
@@ -61,7 +81,7 @@
                     <h5 class="flex-none w-[120px] mb-2 mr-20 text-xl font-bold text-left tracking-tight text-gray-900 ">{{$stamp->title}}</h5>
                     <p class="text-xs md:text-sm h-[3rem] md:h-[5rem] overflow-hidden overflow-ellipsis">{{$stamp->description}}</p>
                 </div>
-                <form action="{{route('dashboard.destroy',['dashboard' => $stamp->id])}}" method="POST" class="mt-4">
+                <form action="{{route('dashboard.stamp.destroy',['stamp' => $stamp->id])}}" method="POST" class="mt-4">
                     @csrf
                     @method('DELETE')
                     <button class="js-delete-button px-3 py-2 text-sm rounded-lg w-16 md:w-24 font-medium text-center text-white bg-red-600">削除</button>

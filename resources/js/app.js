@@ -20,3 +20,15 @@ document.querySelectorAll(".js-delete-button").forEach((item) => {
         }
     });
 });
+
+document.querySelector("#allCheck").addEventListener("click", function () {
+    const _this = this;
+    const jsDeleteForm = document.querySelector(".js-delete-form");
+    const checkBoxLabel = document.querySelector(".js-check-label");
+    checkBoxLabel.textContent = _this.checked ? "全て解除" : "全て選択";
+    jsDeleteForm.classList.toggle("hidden");
+
+    document.querySelectorAll(".js-check").forEach((item) => {
+        _this.checked ? (item.checked = true) : (item.checked = false);
+    });
+});

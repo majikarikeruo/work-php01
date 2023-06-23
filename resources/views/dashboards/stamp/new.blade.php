@@ -6,9 +6,9 @@
     <div class="bg-white p-10 shadow-lg">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-2xl font-bold">新規登録</h1>
-            <a href="{{ route('dashboard.index') }}" class="text-sm underline">一覧へ戻る</a>
+            <a href="{{ route('dashboard.stamp.index') }}" class="text-sm underline">一覧へ戻る</a>
         </div>
-        <form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('dashboard.stamp.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <ul>
 

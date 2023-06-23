@@ -36,12 +36,23 @@ class DashboardController extends Controller
 
     public function search(Request $request)
     {
+        $sort = $request->input('sort');
         $keyword = $request->input('query');
         $query = Stamp::query();
 
         if (!empty($keyword)) {
             $query->where('title', 'LIKE', "%{$keyword}%")
                 ->orWhere('description', 'LIKE', "%{$keyword}%");
+
+            if ($sort) {
+                if ($sort === 'created_at_desc') {
+                    $query->orderBy('created_at', 'desc');
+                } elseif ($sort === 'created_at_asc') {
+                    $query->orderBy('created_at', 'asc');
+                } elseif ($sort === 'title') {
+                    $query->orderBy('title', 'asc');
+                }
+            }
         }
 
         $stamps = $query->paginate(10);
@@ -81,7 +92,7 @@ class DashboardController extends Controller
         // データベースへの保存処理
 
         if (!$imagePath) {
-            return redirect()->route('dashboard.create');
+            return redirect()->route('dashboard.stamp.create');
         }
 
         // データベースへの保存処理
@@ -94,7 +105,7 @@ class DashboardController extends Controller
         session()->flash('flashmessage', '画像の登録が完了しました');
 
 
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.stamp.index');
     }
 
     /**
@@ -142,7 +153,7 @@ class DashboardController extends Controller
 
             if (!$imagePath) {
                 session()->flash('errorMessage', '画像情報の更新に失敗しました');
-                return redirect()->route('dashboard.edit', ['dashboard' => $id]);
+                return redirect()->route('dashboard.stamp.edit', ['stamp' => $id]);
             }
         }
 
@@ -158,7 +169,7 @@ class DashboardController extends Controller
         session()->flash('flashmessage', '画像情報の更新が完了しました');
 
 
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.stamp.index');
     }
 
     /**
@@ -173,6 +184,20 @@ class DashboardController extends Controller
 
         session()->flash('flashmessage', '画像の削除が完了しました');
 
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.stamp.index');
+    }
+
+    public function bulkDestroy(Request $request)
+    {
+        // リクエストから選択されたアイテムのIDを取得
+        $selectedIds = $request->input('stamps');
+
+        // 選択されたアイテムを削除
+        Stamp::whereIn('id', $selectedIds)->delete();
+
+        session()->flash('flashmessage', '画像の削除が完了しました');
+
+
+        return redirect()->route('dashboard.stamp.index');
     }
 }

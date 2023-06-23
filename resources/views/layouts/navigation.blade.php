@@ -7,7 +7,7 @@
         <div class="flex">
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
-                <a href="{{ route('dashboard.index') }}" class="font-bold text-center text-lg flex items-cente">
+                <a href="{{ route('dashboard.stamp.index') }}" class="font-bold text-center text-lg flex items-cente">
                     コスゲリアン.net CMS
                 </a>
             </div>
@@ -36,7 +36,7 @@
                 </x-slot>
 
                 <x-slot name="content">
-                    <!-- <x-dropdown-link :href="route('profile.edit')">
+                    <!-- <x-dropdown-link :href="route('dashboard.profile.edit')">
                         {{ __('プロフィール') }}
                     </x-dropdown-link> -->
 
@@ -68,7 +68,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden absolute right-0 top-[66px] shadow-md bg-white">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard.stamp.index')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
@@ -81,7 +81,7 @@
             </div> -->
 
             <div class="mt-0">
-                <!-- <x-responsive-nav-link :href="route('profile.edit')">
+                <!-- <x-responsive-nav-link :href="route('dashboard.profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link> -->
 

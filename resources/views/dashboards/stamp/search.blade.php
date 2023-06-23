@@ -10,7 +10,7 @@
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
     </span>
-    <form action="{{route('dashboard.search')}}" method="GET" class="flex">
+    <form action="{{route('dashboard.stamp.search')}}" method="GET" class="flex">
         <input type="search" name="query" placeholder="検索" class="mr-2 py-3 px-4 pl-10 block md:w-80 border-gray-200 rounded-md text-sm border">
         <button type="submit" class="px-3 py-2 text-sm rounded-lg w-16 md:w-24 font-medium text-center text-white bg-[#111727]">検索</button>
     </form>
@@ -29,9 +29,29 @@
 
 
 <div class="w-full">
+    <div class="flex justify-between items-center mb-2">
+        <div>
+            <span>{{ ($stamps->currentPage() -1) * $stamps->perPage() + 1}}件〜{{ (($stamps->currentPage() -1) * $stamps->perPage() + 1) + (count($stamps) -1)  }}件を表示</span>
+            <span>(全{{ $stamps->total() }}件)</span>
+        </div>
+        <div class="flex items-center">
+            <span class="mr-3">並び替え</span>
+            <form action="{{route('dashboard.stamp.search')}}" method="GET" class="flex" id="sortForm">
+                <input type="hidden" name="query" value="{{ $keyword }}">
+                <select name="sort" id="sort" class="border border-gray-200 rounded-md text-sm" onchange="document.getElementById('sortForm').submit();">
+                    <option value="created_at_asc" {{ request('sort') == 'created_at_asc' ? 'selected' : '' }}>登録順（新しい順）</option>
+                    <option value="created_at_desc" {{ request('sort') == 'created_at_desc' ? 'selected' : '' }}>登録順（古い順）</option>
+                    <option value="title" {{ request('sort') == 'title' ? 'selected' : '' }}>タイトル順</option>
+                </select>
+            </form>
+
+        </div>
+    </div>
+
+
     @foreach ($stamps as $stamp)
     <div class="border border-gray-200 bg-white">
-        <a href="/dashboard/{{$stamp->id}}/edit" class="relative flex items-center px-3 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
+        <a href="{{route('dashboard.stamp.edit', ['stamp'=>$stamp->id]) }}" class="relative flex items-center px-3 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
             <div class="flex-none px-4 md:px-8">
                 <input type="checkbox" name="" id="">
             </div>
