@@ -31,7 +31,7 @@
 <div class="w-full">
     @foreach ($stamps as $stamp)
     <div class="border border-gray-200 bg-white">
-        <a href="/dashboard/{{$stamp->id}}/edit" class="relative flex items-center px-3 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
+        <a href="/dashboard/{{$stamp->id}}/edit" class="relative flex items-center px-8 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
             <!-- <div class="flex-none px-4 md:px-8">
                 <input type="checkbox" name="" id="">
             </div> -->
