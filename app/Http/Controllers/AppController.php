@@ -17,29 +17,29 @@ class AppController extends Controller
         $query = Stamp::query();
         $stamps = $query->get();
 
-        return view('index', compact(['stamps']));
+        return view('apps.index', compact(['stamps']));
     }
 
     public function about()
     {
 
-        return view('about');
+        return view('apps.about');
     }
     public function taisou()
     {
 
-        return view('taisou');
+        return view('apps.taisou');
     }
     public function howtouse()
     {
 
-        return view('howtouse');
+        return view('apps.howtouse');
     }
 
     public function contact()
     {
 
-        return view('contact');
+        return view('apps.contact');
     }
 
     public function download(Request $request)
