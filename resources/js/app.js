@@ -14,6 +14,7 @@ const jsDeleteForm = document.querySelector(".js-delete-form");
 const checkBoxLabel = document.querySelector(".js-check-label");
 const checks = document.querySelectorAll(".js-check");
 const deleteStampInput = document.querySelector(".js-delete-stamp");
+const bulkDeleteButton = document.querySelector(".js-bulk-delete");
 
 const mobileMenu = document.querySelector(".js-mobile-menu");
 mobileMenu.addEventListener("click", () => {
@@ -27,6 +28,12 @@ deleteButtons.forEach((button) => {
             event.preventDefault();
         }
     });
+});
+
+bulkDeleteButton.addEventListener("click", (event) => {
+    if (!window.confirm("本当に削除しますか？")) {
+        event.preventDefault();
+    }
 });
 
 allCheck.addEventListener("change", function () {

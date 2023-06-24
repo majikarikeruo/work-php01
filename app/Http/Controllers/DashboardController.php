@@ -139,7 +139,6 @@ class DashboardController extends Controller
 
         //
         // 画像ファイルのアップロード処理
-        var_dump($request->file('image'));
         $validate = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -156,9 +155,6 @@ class DashboardController extends Controller
                 return redirect()->route('dashboard.stamp.edit', ['stamp' => $id]);
             }
         }
-
-
-
 
         // データベースへの保存処理
         Stamp::updateOrCreate(['id' => $id], [
@@ -190,10 +186,11 @@ class DashboardController extends Controller
     public function bulkDestroy(Request $request)
     {
         // リクエストから選択されたアイテムのIDを取得
-        $selectedIds = $request->input('stamps');
+        $selectedIds = explode(',', $request->input('deleteStamp'));
 
         // 選択されたアイテムを削除
         Stamp::whereIn('id', $selectedIds)->delete();
+
 
         session()->flash('flashmessage', '画像の削除が完了しました');
 

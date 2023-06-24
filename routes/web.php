@@ -33,6 +33,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::get('/stamp/search', [DashboardController::class, 'search'])->name('stamp.search');
+        Route::delete('/stamp/bulkDestroy', [DashboardController::class, 'bulkDestroy'])->name('stamp.bulkDestroy');
         Route::resource('/page', PageController::class);
         Route::resource('/stamp', DashboardController::class);
     });

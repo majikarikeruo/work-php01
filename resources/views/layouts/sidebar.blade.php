@@ -11,7 +11,7 @@
             <li class="mt-8">
                 <span class="inline-block mb-2 text-xs text-gray-400">ページ</span>
                 <ul>
-                    <li><a href="{{route('dashboard.page.create') }}" class="inline-block py-2 text-sm text-white">新規ページ作成<span class="ml-2 text-[10px]">(工事中)</span></a></li>
+                    <li><a href="#" class="inline-block py-2 text-sm text-white">新規ページ作成<span class="ml-2 text-[10px]">(工事中)</span></a></li>
                     <li><a href="{{route('dashboard.page.index') }}" class="inline-block py-2 text-sm text-white">作成ページ一覧</a></li>
                 </ul>
             </li>
