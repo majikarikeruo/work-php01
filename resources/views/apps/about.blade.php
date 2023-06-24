@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 
-@section('content')
+@section('title')
+コスゲリアンについて
+@endsection
 
+
+@section('content')
 <div class="container mx-auto text-gray-600 py-10 max-w-[1140px] px-4">
     <h1 class="text-2xl font-bold mb-4">コスゲリアンについて</h1>
     <p>本サイトは、<a href="https://store.line.me/stickershop/product/1450874/ja" target="_blank">LINEスタンプ・コスゲの日常</a>で展開したキャラクター「コスゲリアン」の更なる認知拡大を目指して制作されました。</p>

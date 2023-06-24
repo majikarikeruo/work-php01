@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 
+@section('title')
+コスゲリアン体操
+@endsection
+
 @section('content')
 <div class="container mx-auto text-gray-600 py-10 max-w-[1140px] px-4">
 

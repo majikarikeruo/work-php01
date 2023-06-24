@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 
+@section('title')
+お問い合わせ
+@endsection
+
+
+
 @section('content')
 
 <div class="container mx-auto text-gray-600 py-10 max-w-[720px] px-4">
