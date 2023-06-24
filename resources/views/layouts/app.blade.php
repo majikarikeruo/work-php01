@@ -46,19 +46,19 @@
         <div class="bg-[#18c5ff]">
             <div class="container">
                 <nav>
-                    <ul class="flex justify-center gap-20">
-                        <li class="level-item has-text-centered">
-                            <a class="inline-block py-4 text-white" href="{{url('/about/')}}">コスゲリアンについて</a>
+                    <ul class="md:flex justify-center gap-20">
+                        <li class="">
+                            <a class="block px-6 py-4 text-white" href="{{url('/about/')}}">コスゲリアンについて</a>
                         </li>
-                        <li class="level-item has-text-centered">
-                            <a class="inline-block py-4  text-white" href="{{url('/howtouse/')}}">素材の使い方・規約</a>
+                        <li class="">
+                            <a class="block px-6 py-4  text-white" href="{{url('/howtouse/')}}">素材の使い方・規約</a>
                         </li>
 
-                        <li class="level-item has-text-centered">
-                            <a class="inline-block py-4  text-white" href="{{ url('/taisou/') }}">コスゲリアン体操</a>
+                        <li class="">
+                            <a class="block px-6 py-4  text-white" href="{{ url('/taisou/') }}">コスゲリアン体操</a>
                         </li>
-                        <li class="level-item has-text-centered">
-                            <a href="{{url('/contact/')}}" class="inline-block py-4 text-white">お問い合わせ</a>
+                        <li class="">
+                            <a href="{{url('/contact/')}}" class="block px-6 py-4 text-white">お問い合わせ</a>
                         </li>
                     </ul>
                 </nav>

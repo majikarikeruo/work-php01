@@ -7,21 +7,20 @@
         <iframe width="560" height="315" class="youtube--inner" src="https://www.youtube.com/embed/0JohOCnMjPg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
-<div class="container">
-
-    <div class="text-center my-8">
-        <ul class="flex justify-center gap-4">
+<div class="container px-4 py-8">
+    <div class="text-center">
+        <ul class="flex flex-col md:flex-row justify-center gap-4">
             <li class="banner-item"><a href="https://store.line.me/stickershop/product/1450874/ja" target="_blank"><img src="https://kosugelian.net/images/banner.png" alt="LINEスタンプ・コスゲの日常発売中"></a></li>
             <li class="banner-item"><a href="{{url('taisou')}}" target="_blank"><img src="https://kosugelian.net/images/banner2.png" alt="LINEスタンプ・コスゲの日常発売中"></a></li>
         </ul>
     </div>
     <div class="py-20">
         <h2 class="text-center font-bold text-2xl mb-4">Illustration <span class="block mt-2 text-sm text-gray-400">素材イラスト一覧</span></h2>
-        <p class="text-sm text-center">スマートフォンをお使いの場合は、画像を長押しするなどして<br>
-            「イメージを保存（iPhoneの場合）」などをご選択の上、<br>
+        <p class="text-sm text-left md:text-center">スマートフォンをお使いの場合は、画像を長押しするなどして<br class="hidden md:block">
+            「イメージを保存（iPhoneの場合）」などをご選択の上、<br class="hidden md:block">
             素材をダウンロードいただいて問題ありません。</p>
 
-        <div class="grid grid-cols-3 gap-4 gap-y-8 mt-8 max-w-6xl mx-auto justify-center">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 gap-y-12 mt-8 max-w-6xl mx-auto justify-center">
             @foreach ($stamps as $stamp)
             <article class="text-center">
                 <figure class="flex justify-center">

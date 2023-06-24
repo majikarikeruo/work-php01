@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mx-auto text-gray-600 py-10 max-w-[720px]">
+<div class="container mx-auto text-gray-600 py-10 max-w-[720px] px-4">
 
     <h1 class="text-xl font-bold mb-4">お問い合わせ</h1>
     <p>お問い合わせなどあれば、下記フォームよりご連絡ください。</p>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="mb-8 text-center">
-            <button class="p-3 text-lg rounded-lg w-16 md:w-24 font-medium text-center text-white bg-[#111727]">
+            <button class="p-3 text-lg rounded-lg w-16 w-24 font-medium text-center text-white bg-[#111727]">
                 送信
             </button>
         </div>

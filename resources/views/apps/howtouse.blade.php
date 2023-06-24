@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="container mx-auto text-gray-600 py-10 max-w-[1140px]">
+<div class="container mx-auto text-gray-600 py-10 max-w-[1140px] px-4">
     <h1 class="text-2xl font-bold mb-4">素材の使い方と利用規約について</h1>
     <p>コスゲリアン.comで配布されている素材の使い方と利用規約については、以下をご一読ください。</p>
 

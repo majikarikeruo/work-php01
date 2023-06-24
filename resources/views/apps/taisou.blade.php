@@ -2,15 +2,15 @@
 
 
 @section('content')
-<div class="container mx-auto text-gray-600 py-10 max-w-[1140px]">
+<div class="container mx-auto text-gray-600 py-10 max-w-[1140px] px-4">
 
     <h1 class="text-2xl font-bold mb-4">コスゲリアン体操</h1>
     <p>Amazon Echoで利用できるスキル（スマートフォンでいうアプリに相当します）を開発し、公開しています。</p>
     <p>Amazon Echoシリーズをお持ちの方であれば、どなたでも利用できます。</p>
     <p class="my-10"><a href="https://www.amazon.co.jp/tatsuyakosuge-%E3%82%B3%E3%82%B9%E3%82%B2%E3%83%AA%E3%82%A2%E3%83%B3%E4%BD%93%E6%93%8D/dp/B07KF9KSPG" target="_blank" class="text-[#3490dc]">コスゲリアン体操（Amazon Echoスキルストアより）</a></p>
 
-    <div class="video">
-        <iframe class="video-inner" width="560" height="315" src="https://www.youtube.com/embed/GnAg47GSveo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="aspect-video md:aspect-auto">
+        <iframe class="aspect-video md:aspect-auto w-full md:w-96 md:h-72" width="" height="" src="https://www.youtube.com/embed/GnAg47GSveo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 
