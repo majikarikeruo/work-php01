@@ -6,29 +6,61 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-document.querySelector(".js-mobile-menu").addEventListener("click", () => {
-    console.log("clicked");
-    document.querySelector(".sidebar").classList.toggle("show");
-    document.querySelector(".overlay").classList.toggle("show");
+const sidebar = document.querySelector(".sidebar");
+const overlay = document.querySelector(".overlay");
+const deleteButtons = document.querySelectorAll(".js-delete-button");
+const allCheck = document.querySelector("#allCheck");
+const jsDeleteForm = document.querySelector(".js-delete-form");
+const checkBoxLabel = document.querySelector(".js-check-label");
+const checks = document.querySelectorAll(".js-check");
+const deleteStampInput = document.querySelector(".js-delete-stamp");
+
+const mobileMenu = document.querySelector(".js-mobile-menu");
+mobileMenu.addEventListener("click", () => {
+    sidebar.classList.toggle("show");
+    overlay.classList.toggle("show");
 });
 
-document.querySelectorAll(".js-delete-button").forEach((item) => {
-    item.addEventListener("click", (event) => {
-        const res = window.confirm("本当に削除しますか？");
-        if (!res) {
+deleteButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        if (!window.confirm("本当に削除しますか？")) {
             event.preventDefault();
         }
     });
 });
 
-document.querySelector("#allCheck").addEventListener("click", function () {
-    const _this = this;
-    const jsDeleteForm = document.querySelector(".js-delete-form");
-    const checkBoxLabel = document.querySelector(".js-check-label");
-    checkBoxLabel.textContent = _this.checked ? "全て解除" : "全て選択";
+allCheck.addEventListener("change", function () {
+    let deleteStamps = [];
+    checkBoxLabel.textContent = this.checked ? "全て解除" : "全て選択";
     jsDeleteForm.classList.toggle("hidden");
 
-    document.querySelectorAll(".js-check").forEach((item) => {
-        _this.checked ? (item.checked = true) : (item.checked = false);
+    checks.forEach((check) => {
+        check.checked = this.checked;
+        if (this.checked) {
+            deleteStamps.push(check.value);
+        }
+    });
+
+    deleteStampInput.value = this.checked ? String(deleteStamps) : "";
+});
+
+checks.forEach((check) => {
+    check.addEventListener("change", function () {
+        const currentValues = deleteStampInput.value;
+        let currentArray = currentValues ? currentValues.split(",") : [];
+
+        if (this.checked) {
+            currentArray.push(this.value);
+        } else {
+            currentArray = currentArray.filter((value) => value !== this.value);
+        }
+
+        deleteStampInput.value = String(currentArray);
+
+        if (!currentArray.length) {
+            checkBoxLabel.textContent = "全て選択";
+            allCheck.checked = false;
+            jsDeleteForm.classList.toggle("hidden");
+        }
     });
 });

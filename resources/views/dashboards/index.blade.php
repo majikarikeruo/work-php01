@@ -50,7 +50,7 @@
 
     <div class="flex-none mb-4 px-0 flex items-center">
         <form action="" class="mr-8 js-delete-form hidden">
-            <input type="hidden" name="stamp" value="">
+            <input type="hidden" name="deleteStamp" value="" class="js-delete-stamp">
             <button type="submit" class="inline-flex items-center px-3 py-2 text-sm rounded-lg w-50 font-medium text-center border-solid border text-[#f00] bg-white border-[#f00]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="3 6 5 6 21 6"></polyline>
