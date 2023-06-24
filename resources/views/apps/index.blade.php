@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 
+@section('title')
+コスゲリアン.net
+@endsection
+
+
 @section('content')
 <div class="bg-[#222]">
     <div class="flex justify-center">
