@@ -89,3 +89,20 @@ if (document.querySelector("#contentEditor")) {
         theme: "snow",
     });
 }
+
+if (document.querySelector("#js-page-form")) {
+    document
+        .querySelector("#js-page-form")
+        .addEventListener("submit", (event) => {
+            event.preventDefault;
+            const content =
+                document.querySelector("#contentEditor").children[0].innerHTML;
+
+            if (!content) {
+                return false;
+            }
+            document.querySelector(".js-hidden-page").value = content;
+
+            document.querySelector("#js-page-form").submit();
+        });
+}

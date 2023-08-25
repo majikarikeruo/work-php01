@@ -8,7 +8,7 @@
 
 
 @section('content')
-<h2 class="text-2xl font-bold mb-8">ページ一覧</h2>
+<h2 class="text-2xl font-bold mb-8">スタンプ一覧</h2>
 
 <div class="mb-8 inline-block relative">
     <span class="inline-block w-5 absolute left-3 top-1/2 -translate-y-1/2">
@@ -79,7 +79,7 @@
 
     @foreach ($pages as $page)
     <div class="border border-gray-200 bg-white">
-        <a href="{{route('dashboard.page.edit', ['page'=>$page->id]) }}" class="relative flex items-center px-4 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
+        <a href="{{route('dashboard.stamp.edit', ['stamp'=>$page->id]) }}" class="relative flex items-center px-4 py-2 text-sm shadow-sm font-medium hover:bg-gray-100 p-4 ">
             <div class="flex-none px-4 md:px-8">
                 <input type="checkbox" name="stamps[]" id="" value="{{$page->id}}" class="js-check">
             </div>

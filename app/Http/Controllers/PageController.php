@@ -11,11 +11,38 @@ class PageController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
+        //slug
+        // $slug = $request->path();
+        // $page = Page::where('slug', $slug)->first();
+        // var_dump($page);
 
-        return view('dashboards.page.index');
+        // if(is_null($page)) abort(404);
+
+        // $contents = $page->contents;
+        $query = Page::query();
+
+        $pages = $query->paginate(10);
+
+
+
+        return view('dashboards.page.index',compact(['pages']));
     }
+
+    public function search(){
+
+        $query = Page::query();
+
+        $pages = $query->paginate(10);
+
+
+
+
+        return view('dashboards.page.search',compact(['pages']));
+
+    }
+
 
     public function create()
     {
@@ -46,9 +73,11 @@ class PageController extends Controller
 
     }
 
-    public function edit()
+    public function edit(string $id)
     {
+        $page = Page::find($id);
 
+        return view('dashboards.page.edit', compact(['page']));
     }
     public function update()
     {

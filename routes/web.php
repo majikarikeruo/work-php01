@@ -34,10 +34,16 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::get('/stamp/search', [DashboardController::class, 'search'])->name('stamp.search');
         Route::delete('/stamp/bulkDestroy', [DashboardController::class, 'bulkDestroy'])->name('stamp.bulkDestroy');
+
+        Route::get('/page/search', [PageController::class, 'search'])->name('page.search');
+        Route::delete('/page/bulkDestroy', [PageController::class, 'bulkDestroy'])->name('page.bulkDestroy');
+
         Route::resource('/page', PageController::class);
         Route::resource('/stamp', DashboardController::class);
     });
 });
+
+// Route::fallback('PageController@index');
 
 
 
