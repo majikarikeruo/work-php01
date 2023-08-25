@@ -1,11 +1,7 @@
 <?php
 
-use App\Http\Controllers\AppController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,34 +14,18 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', [AppController::class, 'index'])->name('index');
-Route::get('/about', [AppController::class, 'about'])->name('about');
-Route::get('/taisou', [AppController::class, 'taisou'])->name('taisou');
-Route::get('/howtouse', [AppController::class, 'howtouse'])->name('howtouse');
-Route::get('/contact', [AppController::class, 'contact'])->name('contact');
-
-Route::post('/download', [AppController::class, 'download'])->name('download');
-
-
-Route::middleware('auth')->prefix('dashboard')->group(function () {
-    Route::as('dashboard.')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-        Route::get('/stamp/search', [DashboardController::class, 'search'])->name('stamp.search');
-        Route::delete('/stamp/bulkDestroy', [DashboardController::class, 'bulkDestroy'])->name('stamp.bulkDestroy');
-
-        Route::get('/page/search', [PageController::class, 'search'])->name('page.search');
-        Route::delete('/page/bulkDestroy', [PageController::class, 'bulkDestroy'])->name('page.bulkDestroy');
-
-        Route::resource('/page', PageController::class);
-        Route::resource('/stamp', DashboardController::class);
-    });
+Route::get('/', function () {
+    return view('welcome');
 });
 
-// Route::fallback('PageController@index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-
-
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
